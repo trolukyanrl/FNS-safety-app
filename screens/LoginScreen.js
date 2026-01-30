@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Alert,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -18,13 +19,26 @@ const BORDER_GREY = '#CCCCCC';
 const BG_GREY = '#E8E8E8';
 const GREEN = '#34A853';
 
-export default function LoginScreen() {
+// Dummy credentials
+const SIC_CREDENTIALS = { username: 'sic@123', password: 'sic@123' };
+const TA_CREDENTIALS = { username: 'ta@123', password: 'ta@123' };
+
+export default function LoginScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
-    console.log('Login:', { username, password });
+    const trimmedUsername = username.trim();
+    const trimmedPassword = password.trim();
+
+    if (trimmedUsername === SIC_CREDENTIALS.username && trimmedPassword === SIC_CREDENTIALS.password) {
+      navigation.replace('SICDashboard');
+    } else if (trimmedUsername === TA_CREDENTIALS.username && trimmedPassword === TA_CREDENTIALS.password) {
+      navigation.replace('TADashboard');
+    } else {
+      Alert.alert('Invalid Credentials', 'Please enter a valid username and password.');
+    }
   };
 
   return (
