@@ -5,8 +5,8 @@
 Run these commands once on your machine:
 
 ```powershell
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
+git config --global user.name "trolukyanrl"
+git config --global user.email "trolukyanrl@gmail.com"
 ```
 
 Use the **same email** as your GitHub account.
@@ -30,7 +30,7 @@ After creating the repo, GitHub will show you commands. Or run:
 
 ```powershell
 # Add your GitHub repo as remote (replace with YOUR username and repo name)
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git remote add origin https://github.com/trolukyanrl/nrl-login-app.git
 
 # Stage all files
 git add .
