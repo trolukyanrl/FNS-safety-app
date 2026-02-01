@@ -62,56 +62,33 @@ export default function SICDashboard({ navigation }) {
           />
         </View>
 
-        {/* Page Title */}
-        <Text style={styles.pageTitle}>Approval Dashboard</Text>
 
         {/* Stats */}
         <View style={styles.statsRow}>
-          <View style={[styles.statCard, { backgroundColor: LIGHT_BLUE }]}>
-            <Ionicons name="hourglass-outline" size={24} color={BLUE} />
-            <Text style={styles.statNumber}>14</Text>
-            <Text style={styles.statLabel}>Awaiting Review</Text>
-          </View>
+          <TouchableOpacity style={[styles.statCard, { backgroundColor: LIGHT_BLUE }]} onPress={() => navigation.navigate('SICAssignTask')}>
+            <Ionicons name="add-circle-outline" size={24} color={BLUE} />
+            <Text style={styles.statLabel}>Assign Task</Text>
+          </TouchableOpacity>
 
-          <View style={[styles.statCard, { backgroundColor: YELLOW }]}>
-            <Ionicons name="warning-outline" size={24} color="#F59E0B" />
-            <Text style={styles.statNumber}>05</Text>
-            <Text style={styles.statLabel}>Critical Issues</Text>
-          </View>
+          <TouchableOpacity style={[styles.statCard, { backgroundColor: YELLOW }]} onPress={() => navigation.navigate('SICTasks')}>
+            <Ionicons name="list-outline" size={24} color="#F59E0B" />
+            <Text style={styles.statLabel}>View Tasks</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Pending Approvals */}
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Pending Approvals</Text>
-          <Text style={styles.link}>View History</Text>
+        <View style={styles.statsRow}>
+          <View style={[styles.statCard, { backgroundColor: '#FEE2E2' }]}>
+            <Ionicons name="document-text-outline" size={24} color="#DC2626" />
+            <Text style={styles.statLabel}>Pending Approvals</Text>
+          </View>
+
+          <View style={[styles.statCard, { backgroundColor: '#F3E8FF' }]}>
+            <Ionicons name="time-outline" size={24} color="#7C3AED" />
+            <Text style={styles.statLabel}>Overdue Tasks</Text>
+          </View>
         </View>
 
-        {/* Approval Cards */}
-        {[1, 2].map((i) => (
-          <View key={i} style={styles.approvalCard}>
-            <Text style={styles.badge}>
-              {i === 1 ? 'BA SET · #BA-9021' : 'SAFETY KIT · #SK-442'}
-            </Text>
-            <Text style={styles.approvalTitle}>
-              {i === 1
-                ? 'Cylinder Pressure Low Check'
-                : 'Weekly Inventory Audit - Zone B'}
-            </Text>
-            <Text style={styles.submittedBy}>
-              Submitted by Inspector {i === 1 ? 'Amit R.' : 'Sarah K.'}
-            </Text>
-
-            <View style={styles.actionRow}>
-              <TouchableOpacity style={styles.reviewButton}>
-                <Text style={styles.reviewText}>Review Report</Text>
-              </TouchableOpacity>
-
-              <View style={styles.approvedIcon}>
-                <Ionicons name="checkmark" size={18} color={GREEN} />
-              </View>
-            </View>
-          </View>
-        ))}
       </ScrollView>
 
       {/* Bottom Navigation */}
